@@ -1,44 +1,59 @@
 <template>
-  <v-app>
+  <v-app id="sandbox">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              Application
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+
+      <v-divider></v-divider>
+
+      <v-list>
+        <v-list-tile v-for="page in pages" :key="page.name" :to="page.route">
+          {{page.name}}
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-toolbar app>
-      <v-toolbar-title class="headline">
-        <span>OCR-test</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn flat>
-        <router-link to="/">Home</router-link>
-      </v-btn>
-      <v-btn flat>
-        <router-link to="/ocr">OCR</router-link>
-      </v-btn>
-      <v-btn flat>
-        <router-link to="/about">About</router-link>
-      </v-btn>
+      <v-toolbar-side-icon
+        @click.stop="drawer = !drawer"
+      ></v-toolbar-side-icon>
+      <v-toolbar-title>Vuetify</v-toolbar-title>
     </v-toolbar>
-
-
+    
     <v-content>
-      <router-view></router-view>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-content>
 
-    <v-footer>
-      footer test
+    <v-footer app>
+      <span class="px-3">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
+
   </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'App',
+@Component({
   components: {
-    HelloWorld,
   },
-  data() {
-    return {
-      //
-    };
-  },
-};
+})
+export default class App extends Vue {
+  private drawer: boolean = false;
+  private pages: object[] = [
+    {
+      name: 'OCR',
+      route: '/',
+    },
+  ];
+}
 </script>
