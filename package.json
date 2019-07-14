@@ -18,8 +18,8 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-typescript": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
+    "@vue/cli-plugin-typescript": "^3.9.0",
+    "@vue/cli-service": "^3.9.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "typescript": "^3.4.3",
