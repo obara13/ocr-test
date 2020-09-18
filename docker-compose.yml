@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    app:
+        env_file: .env
+        build:
+            context: ./
+            args:
+                http_proxy: ${http_proxy}
+                https_proxy: ${https_proxy}
+        ports:
+            - 8080:8080
+        tty: true
+        #volumes:
